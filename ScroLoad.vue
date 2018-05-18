@@ -1,0 +1,67 @@
+<template>
+  <div class="han-load">
+    <slot v-if="nomoreData" name="nomore">
+      <div class="han-load-slot">{{nomoreText}}</div>
+    </slot>
+    <slot v-else name="load">
+      <div class="han-load-slot">{{loadText}}</div>
+    </slot>
+  </div>
+</template>
+
+<script>
+export default {
+  name: 'Hanload',
+  data () {
+    return {
+      io: null,
+      container: null
+    }
+  },
+  props: {
+    loadText: {
+      type: String,
+      default: 'Loading...'
+    },
+    nomoreText: {
+      type: String,
+      default: 'No More Data'
+    },
+    nomoreData: {
+      type: Boolean,
+      default: false
+    }
+  },
+  mounted () {
+    // this.container = this.$el
+    // this.io = new IntersectionObserver(([entry]) => {
+    //   console.log(entry, entry.isIntersecting)
+    //   if (entry.isIntersecting) {
+    //     this.$emit('scollCallBack')
+    //   }
+    // })
+    // this.io.observe(this.container)
+    // IntersectionObserver API 的兼容性，polyfill处理
+    (window.IntersectionObserver
+      ? Promise.resolve()
+      : import('intersection-observer')
+    ).then(() => {
+      this.container = this.$el
+      this.io = new IntersectionObserver(([entry]) => {
+        console.log(entry, entry.isIntersecting)
+        if (entry.isIntersecting) {
+          this.$emit('scollCallBack')
+        }
+      })
+      this.io.observe(this.container)
+    })
+  }
+}
+</script>
+<style scoped>
+.han-load-slot{
+  height: 50px;
+  text-align:center;
+  line-height:50px;
+}
+</style>
