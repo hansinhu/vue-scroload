@@ -1,14 +1,14 @@
 <template>
   <div class="contaner">
     <div v-for="(n, i) in imgList" :key="i" :style="{backgroundColor: bgColor()}" class="load-item">{{i + '-' + n}}</div>
-    <ScroLoad
+    <VueScroLoad
       @scollCallBack="loadList"
       :nomoreText="'没有更多数据了'"
       :nomoreData="nomore"
       :loadText="'加载中...'">
       <!-- you can add slot for loadText name:load -->
       <!-- you can add slot for nomoreText name:nomore -->
-    </ScroLoad>
+    </VueScroLoad>
   </div>
 </template>
 
@@ -20,9 +20,6 @@ export default {
       imgList: [1, 2, 3, 4, 5, 6],
       nomore: false
     }
-  },
-  components: {
-    ScroLoad: () => import('../ScroLoad')
   },
   methods: {
     bgColor () {
