@@ -1,6 +1,6 @@
 {
   "name": "vue-scroload",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "scroll load component for vue",
   "main": "ScroLoad.vue",
   "directories": {
