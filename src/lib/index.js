@@ -1,4 +1,4 @@
-import vueScrollLoad from './vue-scroll-load.vue' // 导入组件
+import vueScrollLoad from './vue-scroload.vue' // 导入组件
 const VueScroLoad = {
     install(Vue, options) {
         Vue.component(VueScroLoad.name, VueScroLoad) // VueScroLoad.name 组件的name属性

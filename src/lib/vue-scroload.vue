@@ -11,7 +11,7 @@
 
 <script>
 export default {
-  name: 'Hanload',
+  name: 'vue-scroload',
   data () {
     return {
       io: null,
