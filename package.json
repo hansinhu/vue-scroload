@@ -1,7 +1,7 @@
 {
   "name": "vue-scroload",
   "description": "scroll load component for vue",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "hansin <hansincn@gmail.com>",
   "license": "MIT",
   "private": false,
