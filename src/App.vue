@@ -33,7 +33,7 @@ export default {
         } else {
           this.nomore = true
         }
-      }, 1000)
+      }, 10000)
     }
   }
 }
@@ -44,9 +44,10 @@ export default {
   overflow: auto;
 }
 .load-item{
-  height: 200px;
-  line-height: 200px;
+  height: 80px;
+  line-height: 80px;
   font-size: 36px;
   margin-bottom: 10px;
+  text-align: center;
 }
 </style>
