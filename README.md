@@ -33,7 +33,11 @@ npm install vue-scroload --save
 ```
 ```js
 
-// examples:
+// examples 1: main.js
+// import scroload from './lib/index.js'
+// vue.use(scroload.vueScrollLoad)
+
+// examples 2:
 <template>
   <div class="contaner">
     <div v-for="(n, i) in imgList" :key="i" :style="{backgroundColor: bgColor()}" class="load-item">{{i + '-' + n}}</div>
@@ -49,8 +53,7 @@ npm install vue-scroload --save
 </template>
 
 <script>
-import scroload from 'vue-scroload'
-Vue.use(scroload)
+import scroload from './lib/index.js'
 
 export default {
   name: 'app',
@@ -59,6 +62,9 @@ export default {
       imgList: [1, 2, 3, 4, 5, 6],
       nomore: false
     }
+  },
+  components: {
+    'vue-scroload': scroload.vueScrollLoad
   },
   methods: {
     bgColor () {

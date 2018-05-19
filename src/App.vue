@@ -13,6 +13,7 @@
 </template>
 
 <script>
+import scroload from './lib/index.js'
 export default {
   name: 'app',
   data () {
@@ -20,6 +21,12 @@ export default {
       imgList: [1, 2, 3, 4, 5, 6],
       nomore: false
     }
+  },
+  components: {
+    'vue-scroload': scroload.vueScrollLoad
+  },
+  mounted () {
+    console.log(scroload)
   },
   methods: {
     bgColor () {
@@ -33,7 +40,7 @@ export default {
         } else {
           this.nomore = true
         }
-      }, 10000)
+      }, 1000)
     }
   }
 }
