@@ -1,50 +1,37 @@
 {
   "name": "vue-scroload",
-  "version": "1.0.1",
   "description": "scroll load component for vue",
-  "private": false,
+  "version": "1.0.2",
+  "author": "hansin <hansincn@gmail.com>",
   "license": "MIT",
+  "private": false,
   "main": "dist/vue-scroload.js",
-  "directories": {
-    "example": "examples"
-  },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack-dev-server --open --hot",
-    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules",
-    "pub": "npm run build && npm publish",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "cross-env NODE_ENV=production webpack --progress --hide-modules"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hansinhu/vue-scroload.git"
-  },
-  "keywords": [
-    "vue",
-    "components",
-    "scroll-load",
-    "IntersectionObserver"
-  ],
-  "author": "hansinhu",
-  "bugs": {
-    "url": "https://github.com/hansinhu/vue-scroload/issues"
-  },
-  "homepage": "https://github.com/hansinhu/vue-scroload#readme",
   "dependencies": {
-    "vue": "^2.3.3",
-    "intersection-observer": "^0.5.0"
+    "intersection-observer": "^0.5.0",
+    "vue": "^2.5.11"
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions",
+    "not ie <= 8"
+  ],
   "devDependencies": {
-    "babel-core": "^6.0.0",
-    "babel-loader": "^6.0.0",
-    "babel-preset-env": "^1.5.1",
-    "cross-env": "^3.0.0",
-    "css-loader": "^0.25.0",
-    "file-loader": "^0.9.0",
-    "node-sass": "^4.5.0",
-    "sass-loader": "^5.0.1",
-    "vue-loader": "^12.1.0",
-    "vue-template-compiler": "^2.3.3",
-    "webpack": "^2.6.1",
-    "webpack-dev-server": "^2.4.5"
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.0",
+    "babel-preset-stage-3": "^6.24.1",
+    "cross-env": "^5.0.5",
+    "css-loader": "^0.28.7",
+    "file-loader": "^1.1.4",
+    "node-sass": "^4.5.3",
+    "sass-loader": "^6.0.6",
+    "vue-loader": "^13.0.5",
+    "vue-template-compiler": "^2.4.4",
+    "webpack": "^3.6.0",
+    "webpack-dev-server": "^2.9.1"
   }
 }

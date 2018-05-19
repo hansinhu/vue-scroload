@@ -14,7 +14,7 @@
 
 <script>
 export default {
-  name: 'LoadData',
+  name: 'app',
   data () {
     return {
       imgList: [1, 2, 3, 4, 5, 6],

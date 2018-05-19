@@ -2,19 +2,38 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // entry: './src/main.js', // 开发时项目入口
-  entry: './src/lib/index.js', // 打包发布时入口
+  entry: process.env.NODE_ENV === 'production' ? './src/lib/index.js' : './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
-    // filename: 'build.js', // 打包后输出的文件名
-    filename: 'vue-scroload.js', // 我们可不想打包后叫build 多low啊 起一个与项目相对应的
-    library: 'VueScroLoad', // library指定的就是你使用require时的模块名，这里便是require("PayKeyboard")
-    libraryTarget: 'umd', //libraryTarget会生成不同umd的代码，例如可以只是commonjs标准的，也可以是指amd标准的，也可以只是通过script标签引入的。
-    umdNamedDefine: true // 会对 UMD 的构建过程中的 AMD 模块进行命名。否则就使用匿名的 define。
+    filename: 'scroload.js'
   },
-  module: { // loader
-    rules: [{
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: [
+          'vue-style-loader',
+          'css-loader'
+        ],
+      },
+      {
+        test: /\.scss$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader'
+        ],
+      },
+      {
+        test: /\.sass$/,
+        use: [
+          'vue-style-loader',
+          'css-loader',
+          'sass-loader?indentedSyntax'
+        ],
+      },
+      {
         test: /\.vue$/,
         loader: 'vue-loader',
         options: {
@@ -22,8 +41,16 @@ module.exports = {
             // Since sass-loader (weirdly) has SCSS as its default parse mode, we map
             // the "scss" and "sass" values for the lang attribute to the right configs here.
             // other preprocessors should work out of the box, no loader config like this necessary.
-            'scss': 'vue-style-loader!css-loader!sass-loader',
-            'sass': 'vue-style-loader!css-loader!sass-loader?indentedSyntax'
+            'scss': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader'
+            ],
+            'sass': [
+              'vue-style-loader',
+              'css-loader',
+              'sass-loader?indentedSyntax'
+            ]
           }
           // other vue-loader options go here
         }
@@ -45,16 +72,18 @@ module.exports = {
   resolve: {
     alias: {
       'vue$': 'vue/dist/vue.esm.js'
-    }
+    },
+    extensions: ['*', '.js', '.vue', '.json']
   },
   devServer: {
     historyApiFallback: true,
-    noInfo: true
+    noInfo: true,
+    overlay: true
   },
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map' // 生成map文件方便调试
+  devtool: '#eval-source-map'
 }
 
 if (process.env.NODE_ENV === 'production') {
