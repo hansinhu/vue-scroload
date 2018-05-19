@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import scroload from './lib/index.js'
+import scroload from '../dist/scroload.js'
 export default {
   name: 'app',
   data () {
@@ -23,7 +23,7 @@ export default {
     }
   },
   components: {
-    'vue-scroload': scroload.vueScrollLoad
+    'vue-scroload': scroload
   },
   mounted () {
     console.log(scroload)

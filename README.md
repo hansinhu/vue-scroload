@@ -53,7 +53,7 @@ npm install vue-scroload --save
 </template>
 
 <script>
-import scroload from './lib/index.js'
+import scroload from 'vue-scroload'
 
 export default {
   name: 'app',
@@ -64,7 +64,7 @@ export default {
     }
   },
   components: {
-    'vue-scroload': scroload.vueScrollLoad
+    'vue-scroload': scroload
   },
   methods: {
     bgColor () {

@@ -45,7 +45,7 @@ export default {
     (window.IntersectionObserver ? Promise.resolve() : require('intersection-observer')).then(() => {
       this.container = this.$el
       this.io = new IntersectionObserver(([entry]) => {
-        console.log(entry, entry.isIntersecting)
+        // console.log(entry, entry.isIntersecting)
         if (entry.isIntersecting) {
           this.$emit('scollCallBack')
         }
