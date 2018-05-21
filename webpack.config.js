@@ -14,7 +14,7 @@ module.exports = {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'scroload.js',
-    chunkFilename: '[id].chunk.js',
+    // chunkFilename: '[id].chunk.js',
     libraryTarget: 'umd',
     library: 'vue-scroload',
     umdNamedDefine: true
@@ -109,7 +109,9 @@ if (process.env.NODE_ENV === 'production') {
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
       compress: {
-        warnings: false
+        warnings: false,
+        drop_debugger: true,
+        drop_console: true
       }
     }),
     new webpack.LoaderOptionsPlugin({

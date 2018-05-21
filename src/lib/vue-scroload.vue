@@ -10,6 +10,7 @@
 </template>
 
 <script>
+import initIntersection from './intersection-observer.js'
 export default {
   name: 'vue-scroload',
   data () {
@@ -33,31 +34,31 @@ export default {
     }
   },
   mounted () {
-    // this.container = this.$el
-    // this.io = new IntersectionObserver(([entry]) => {
-    //   console.log(entry, entry.isIntersecting)
-    //   if (entry.isIntersecting) {
-    //     this.$emit('scollCallBack')
-    //   }
-    // })
-    // this.io.observe(this.container)
-    // IntersectionObserver API 的兼容性，polyfill处理
-    // let a = require('intersection-observer').default()
-    // console.log(a)
-    (window.IntersectionObserver ? Promise.resolve() : require(['intersection-observer'], () => {
-        return Promise.resolve()
-      })).then(() => {
-      this.container = this.$el
-      this.io = new IntersectionObserver(([entry]) => {
-        // console.log(entry, entry.isIntersecting)
-        if (entry.isIntersecting) {
-          this.$emit('scollCallBack')
-        }
-      })
-      this.io.observe(this.container)
-    }).catch((e)=>{
-      console.log(e)
+     // IntersectionObserver API 的兼容性，
+    if (!window.IntersectionObserver) {
+      initIntersection(window, document)
+    }
+    this.container = this.$el
+    this.io = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        this.$emit('scollCallBack')
+      }
     })
+    this.io.observe(this.container)
+    // polyfill处理
+    // (window.IntersectionObserver ? Promise.resolve() : require(['intersection-observer'], () => {
+    //     return Promise.resolve()
+    //   })).then(() => {
+    //   this.container = this.$el
+    //   this.io = new IntersectionObserver(([entry]) => {
+    //     if (entry.isIntersecting) {
+    //       this.$emit('scollCallBack')
+    //     }
+    //   })
+    //   this.io.observe(this.container)
+    // }).catch((e)=>{
+    //   console.log(e)
+    // })
   }
 }
 </script>
