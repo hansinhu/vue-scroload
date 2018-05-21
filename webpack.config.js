@@ -2,17 +2,19 @@ var path = require('path')
 var webpack = require('webpack')
 
 module.exports = {
-  // entry: './src/lib/index.js',
+  // entry: './src/main.js',
   // output: {
   //   path: path.resolve(__dirname, './dist'),
   //   publicPath: '/dist/',
   //   filename: 'scroload.js'
   // },
-  entry: './src/lib/vue-scroload.vue',
+  entry: process.env.NODE_ENV === 'production' ? './src/lib/vue-scroload.vue' : './src/main.js',
+  // entry: process.env.NODE_ENV === 'production' ? './src/lib/index.js' : './src/main.js',
   output: {
     path: path.resolve(__dirname, './dist'),
     publicPath: '/dist/',
     filename: 'scroload.js',
+    chunkFilename: '[id].chunk.js',
     libraryTarget: 'umd',
     library: 'vue-scroload',
     umdNamedDefine: true

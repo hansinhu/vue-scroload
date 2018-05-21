@@ -42,7 +42,11 @@ export default {
     // })
     // this.io.observe(this.container)
     // IntersectionObserver API 的兼容性，polyfill处理
-    (window.IntersectionObserver ? Promise.resolve() : require('intersection-observer')).then(() => {
+    // let a = require('intersection-observer').default()
+    // console.log(a)
+    (window.IntersectionObserver ? Promise.resolve() : require(['intersection-observer'], () => {
+        return Promise.resolve()
+      })).then(() => {
       this.container = this.$el
       this.io = new IntersectionObserver(([entry]) => {
         // console.log(entry, entry.isIntersecting)
@@ -51,6 +55,8 @@ export default {
         }
       })
       this.io.observe(this.container)
+    }).catch((e)=>{
+      console.log(e)
     })
   }
 }

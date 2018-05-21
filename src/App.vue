@@ -1,5 +1,5 @@
 <template>
-  <div class="contaner">
+  <div id="app" class="contaner">
     <div v-for="(n, i) in imgList" :key="i" :style="{backgroundColor: bgColor()}" class="load-item">{{i + '-' + n}}</div>
     <vue-scroload
       @scollCallBack="loadList"
@@ -13,7 +13,11 @@
 </template>
 
 <script>
-import scroload from '../dist/scroload.js'
+import scroload from '../dist/scroload.js' // 测试编译后的文件
+// import Vue from 'vue'
+// Vue.use(scroload)
+// import scroload from './lib/vue-scroload' // 开发文件
+// import scroload from './lib/index.js' // 开发文件
 export default {
   name: 'app',
   data () {
@@ -26,6 +30,7 @@ export default {
     'vue-scroload': scroload
   },
   mounted () {
+    console.log('-------')
     console.log(scroload)
   },
   methods: {
